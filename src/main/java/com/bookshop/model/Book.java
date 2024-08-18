@@ -1,12 +1,19 @@
 package main.java.com.bookshop.model;
 
+import javax.swing.text.DateFormatter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Book {
+
+    private static DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
     private String name;
     private String author;
     private String genre;
     private int price;
+
+    private final LocalDateTime registrationDate = LocalDateTime.now();
 
     public Book(){}
 
@@ -64,6 +71,6 @@ public class Book {
 
     @Override
     public String toString() {
-        return STR."Book{name='\{name}\{'\''}, author='\{author}\{'\''}, genre='\{genre}\{'\''}, price=\{price}\{'}'}\n";
+        return STR."Book{name='\{name}\{'\''}, author='\{author}\{'\''}, genre='\{genre}\{'\''}, price=\{price}, registrationDate=\{registrationDate.format(FORMATTER)}'}";
     }
 }
