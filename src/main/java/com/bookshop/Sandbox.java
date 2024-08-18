@@ -1,9 +1,9 @@
 package main.java.com.bookshop;
 
-import main.java.com.bookshop.comparator.BookNameComparator;
 import main.java.com.bookshop.model.Book;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Sandbox {
     public static void main(String[] args) {
@@ -15,7 +15,15 @@ public class Sandbox {
                 new Book("Sun Over the Dnipro",  " Olena Petriv", "Drama, Social Novel", 250)
         };
         System.out.println(Arrays.toString(books));
-        Arrays.sort(books, new BookNameComparator());
+        Arrays.sort(books, new Comparator<Book>() {
+            @Override
+            public int compare(Book o1, Book o2) {
+                int result = o1.getName().compareTo(o2.getName());
+
+                if(result == 0 ) return o1.getPrice() - o2.getPrice();
+                else return result;
+            }
+        });
         System.out.println(Arrays.toString(books));
     }
 }
