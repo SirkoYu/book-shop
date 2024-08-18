@@ -1,5 +1,7 @@
 package main.java.com.bookshop.model;
 
+import java.util.Objects;
+
 public class Book {
     private String name;
     private String author;
@@ -36,5 +38,23 @@ public class Book {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return price == book.price && Objects.equals(name, book.name) && Objects.equals(author, book.author) && Objects.equals(genre, book.genre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, author, genre, price);
+    }
+
+    @Override
+    public String toString() {
+        return STR."Book{name='\{name}\{'\''}, author='\{author}\{'\''}, genre='\{genre}\{'\''}, price=\{price}\{'}'}";
     }
 }

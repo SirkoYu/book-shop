@@ -8,8 +8,8 @@ import main.java.com.bookshop.service.ClientService;
 
 public class ApplicationRunner {
 
-    private ClientService clientService = new ClientService();
-    private BookService bookService = new BookService();
+    private final ClientService clientService = new ClientService();
+    private final BookService bookService = new BookService();
 
     public void run(){
         if(Authenticator.authentication()){
@@ -24,6 +24,8 @@ public class ApplicationRunner {
                     client.setBook(book);
 
                     System.out.println("Book has been added.");
+
+                    System.out.println(client);
                 }
             }
         }

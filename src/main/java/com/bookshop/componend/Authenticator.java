@@ -4,7 +4,7 @@ import main.java.com.bookshop.Main;
 
 public class Authenticator {
 
-    private static String PASSWORD = "default";
+    private static final String PASSWORD = "default";
 
     public static boolean authentication() {
         boolean accepted = false;
