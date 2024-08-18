@@ -8,6 +8,15 @@ public class Book {
     private String genre;
     private int price;
 
+    public Book(){}
+
+    public Book(String name, String author, String genre, int price) {
+        this.name = name;
+        this.author = author;
+        this.genre = genre;
+        this.price = price;
+    }
+
     public String getName() {
         return name;
     }
@@ -55,6 +64,6 @@ public class Book {
 
     @Override
     public String toString() {
-        return STR."Book{name='\{name}\{'\''}, author='\{author}\{'\''}, genre='\{genre}\{'\''}, price=\{price}\{'}'}";
+        return STR."Book{name='\{name}\{'\''}, author='\{author}\{'\''}, genre='\{genre}\{'\''}, price=\{price}\{'}'}\n";
     }
 }
