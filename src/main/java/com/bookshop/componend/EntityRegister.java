@@ -28,9 +28,7 @@ public class EntityRegister {
 
     private void printClients(Map<Client.Location, List<Client>> clientsByLocation) {
         for (Map.Entry<Client.Location, List<Client>> clients : clientsByLocation.entrySet()) {
-            String content = "\n Location " + clients.getKey()
-                    + "\n Clients (" + clients.getValue().size() + "): "
-                    + "\n\t" + clients.getValue();
+            String content = STR."\n Location \{clients.getKey()}\n Clients (\{clients.getValue().size()}): \n\t\{clients.getValue()}";
 
             System.out.println(content);
         }
@@ -39,12 +37,14 @@ public class EntityRegister {
         List<Client> fromKyiv = new ArrayList<>();
         List<Client> fromLviv = new ArrayList<>();
         List<Client> fromOdesa = new ArrayList<>();
+        List<Client> unknownLocation = new ArrayList<>();
 
         for(Client client: clients){
             switch (client.getLocation()){
                 case KYIV -> fromKyiv.add(client);
                 case LVIV -> fromLviv.add(client);
                 case ODESA -> fromOdesa.add(client);
+                case UNKNOWN -> unknownLocation.add(client);
             }
         }
 
@@ -52,6 +52,7 @@ public class EntityRegister {
         clientsByLocation.put(Client.Location.KYIV, fromKyiv);
         clientsByLocation.put(Client.Location.LVIV, fromLviv);
         clientsByLocation.put(Client.Location.ODESA, fromOdesa);
+        clientsByLocation.put(Client.Location.UNKNOWN, unknownLocation);
 
         return clientsByLocation;
     }
