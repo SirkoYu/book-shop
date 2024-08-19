@@ -9,6 +9,8 @@ public class Client {
     private String lastname;
     private String email;
 
+    private Location location;
+
     private List<Book> books = new ArrayList<>();
 
     public String getFirstname() {
@@ -41,7 +43,24 @@ public class Client {
 
     @Override
     public String toString() {
-        return STR."Client{firstname='\{firstname}\{'\''}, lastname='\{lastname}\{'\''}, email='\{email}\{'\''}, book=\n\{books}\{'}'}";
+        return STR."Client{firstname='\{firstname}\{'\''}, lastname='\{lastname}\{'\''}, email='\{email}\{'\''}, location='\{location}\{'\''}, book=\{books}\{'}'}";
+    }
+
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     @Override
@@ -62,5 +81,9 @@ public class Client {
 
     public void addBook(Book book) {
         this.books.add(book);
+    }
+
+    public enum Location{
+        KYIV, LVIV, ODESA
     }
 }

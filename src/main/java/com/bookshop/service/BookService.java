@@ -18,7 +18,7 @@ public class BookService {
         System.out.print("Genre: ");
         book.setGenre(Main.SC.nextLine());
         System.out.print("Price: ");
-        book.setPrice(Main.SC.nextInt());
+        book.setPrice(Integer.parseInt(Main.SC.nextLine()));
 
         return book;
     }
