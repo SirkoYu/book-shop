@@ -15,20 +15,37 @@ public class ApplicationRunner {
         if(Authenticator.authentication()){
             Client client = clientService.registerNewClient();
             if (client != null){
-                System.out.print("Do you want to add new book right now? (type \"yes\" if you want to): ");
+                System.out.print("Do you want to add new books right now? (type \"yes\" if you want to): ");
                 String input = Main.SC.nextLine();
                 if(input.equals("yes")) {
-                    System.out.println("Adding a new book.");
-
-                    Book book = bookService.registerNewBook();
-                    client.setBook(book);
-
-                    System.out.println("Book has been added.");
-
+                    registerBooks(client);
                     System.out.println(client);
                 }
             }
         }
 
+    }
+
+
+    private void registerBooks(Client client){
+        boolean continueAddingBooks = true;
+
+        while (continueAddingBooks) {
+            addBook(client);
+            System.out.print("Do you want to add more books to this client? (type \"yes\" if you want to): ");
+            Main.SC.nextLine();
+            String input = Main.SC.nextLine();
+            if (!input.equals("yes")) {
+                continueAddingBooks = false;
+            }
+        }
+    }
+    private void addBook(Client client){
+        System.out.println("Adding a new book.");
+
+        Book book = bookService.registerNewBook();
+        client.addBook(book);
+
+        System.out.println("Book has been added.");
     }
 }

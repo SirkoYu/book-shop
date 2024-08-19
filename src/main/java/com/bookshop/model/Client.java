@@ -1,5 +1,7 @@
 package main.java.com.bookshop.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Client {
@@ -7,7 +9,7 @@ public class Client {
     private String lastname;
     private String email;
 
-    private Book book;
+    private List<Book> books = new ArrayList<>();
 
     public String getFirstname() {
         return firstname;
@@ -33,13 +35,13 @@ public class Client {
         this.email = email;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public void setBook(List<Book> books) {
+        this.books = books;
     }
 
     @Override
     public String toString() {
-        return STR."Client{firstname='\{firstname}\{'\''}, lastname='\{lastname}\{'\''}, email='\{email}\{'\''}, book=\n\{book}\{'}'}";
+        return STR."Client{firstname='\{firstname}\{'\''}, lastname='\{lastname}\{'\''}, email='\{email}\{'\''}, book=\n\{books}\{'}'}";
     }
 
     @Override
@@ -50,11 +52,15 @@ public class Client {
         return Objects.equals(firstname, client.firstname)
                 && Objects.equals(lastname, client.lastname)
                 && Objects.equals(email, client.email)
-                && Objects.equals(book, client.book);
+                && Objects.equals(books, client.books);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstname, lastname, email, book);
+        return Objects.hash(firstname, lastname, email, books);
+    }
+
+    public void addBook(Book book) {
+        this.books.add(book);
     }
 }
